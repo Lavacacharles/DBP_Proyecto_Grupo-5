@@ -97,4 +97,8 @@ public class comicService {
         Comic comic= comicRepository.findById(comicId).get();
         comic.setDislikes(comic.getDislikes() + 1);
     }
+
+    public List<Comic> obtenerTodosLosComics() {
+        return comicRepository.findAll();
+    }
 }

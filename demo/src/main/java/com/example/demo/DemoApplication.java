@@ -1,7 +1,9 @@
 package com.example.demo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.domain.entities.Autor;
 import com.example.demo.domain.entities.Comic;
+import com.example.demo.domain.entities.Temporada;
 import com.example.demo.infraestructure.autorRepository;
 import com.example.demo.infraestructure.comicRepository;
 
@@ -91,8 +94,22 @@ public class DemoApplication implements CommandLineRunner {
 		List<String> l1= new ArrayList<>();
 		l1.add("comic1");
 		c1.setImagenes_description(l1);
+		//---------
+		c1.setDescripcion("Denji es un adolescente que vive con un demonio motosierra llamado Pochita. Para pagar la deuda que le dejó su padre tras su muerte, ha tenido que ganarse el pan como puede matando demonios y vendiendo sus cadáverse a la mafia, aunque su vida siempre ha sido miserable");
+		Set<String> generosC1 = new HashSet<>();
+		generosC1.add("Adventure");
+		generosC1.add("Fantasy");
+		c1.setGeneros(generosC1);
+		//--------
 		c1.setAutor(a1);
+		//-------
+		List<Temporada> temporadasC1 = new ArrayList<>();
+		temporadasC1.add(new Temporada("Temporada 1", "Descripción temporada 1", "URL temporada 1"));
+        temporadasC1.add(new Temporada("Temporada 2", "Descripción temporada 2", "URL temporada 2"));
+        c1.setTemporadas(temporadasC1);
+		//-------
 		comicRepository.save(c1);
+		
 
 		Comic c2 = new Comic();
 		c2.setAutor(a1);
@@ -105,6 +122,17 @@ public class DemoApplication implements CommandLineRunner {
 		List<String> l2= new ArrayList<>();
 		l2.add("comic2");
 		c2.setImagenes_description(l2);
+		//--------------------------------
+		c2.setDescripcion("Denji es un adolescente que vive con un demonio motosierra llamado Pochita. Para pagar la deuda que le dejó su padre tras su muerte, ha tenido que ganarse el pan como puede matando demonios y vendiendo sus cadáverse a la mafia, aunque su vida siempre ha sido miserable");
+		Set<String> generosC2 = new HashSet<>();
+		generosC2.add("Adventure");
+		generosC2.add("Fantasy");
+		c2.setGeneros(generosC2);
+		List<Temporada> temporadasC2 = new ArrayList<>();
+		temporadasC2.add(new Temporada("Temporada 1", "Descripción temporada 1", "URL temporada 1"));
+        temporadasC2.add(new Temporada("Temporada 2", "Descripción temporada 2", "URL temporada 2"));
+        c2.setTemporadas(temporadasC2);
+		//---------------------------
 		comicRepository.save(c2);
 
 		Comic c3 = new Comic();
@@ -118,6 +146,15 @@ public class DemoApplication implements CommandLineRunner {
 		List<String> l3= new ArrayList<>();
 		l3.add("comic3");
 		c3.setImagenes_description(l3);
+		c3.setDescripcion("Denji es un adolescente que vive con un demonio motosierra llamado Pochita. Para pagar la deuda que le dejó su padre tras su muerte, ha tenido que ganarse el pan como puede matando demonios y vendiendo sus cadáverse a la mafia, aunque su vida siempre ha sido miserable");
+		Set<String> generosC3 = new HashSet<>();
+		generosC3.add("Adventure");
+		generosC3.add("Fantasy");
+		c3.setGeneros(generosC3);
+		List<Temporada> temporadasC3 = new ArrayList<>();
+		temporadasC3.add(new Temporada("Temporada 1", "Descripción temporada 1", "URL temporada 1"));
+        temporadasC3.add(new Temporada("Temporada 2", "Descripción temporada 2", "URL temporada 2"));
+        c3.setTemporadas(temporadasC3);
 		comicRepository.save(c3);
 
 		Comic c4 = new Comic();

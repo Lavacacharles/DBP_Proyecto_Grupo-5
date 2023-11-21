@@ -32,6 +32,14 @@ public class Comic {
     private Integer precio;
     private Integer likes;
     private Integer dislikes;
+    private String descripcion;
+    private String genero;
+
+
+    @ElementCollection
+    @CollectionTable(name = "comic_generos", joinColumns = @JoinColumn(name = "comic_id"))
+    @Column(name = "genero")
+    private Set<String> generos = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "autor_id")
@@ -47,4 +55,9 @@ public class Comic {
     
     @ManyToMany(mappedBy = "comics", cascade = CascadeType.ALL)
     private Set<Venta> vendido = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "comic_id")
+    private List<Temporada> temporadas;
+    
 }
